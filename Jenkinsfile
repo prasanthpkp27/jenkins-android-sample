@@ -14,13 +14,11 @@ pipeline {
 
         stage('Build Develop APK') {
 
-            when {
-                branch 'master'
-            }
+    
             steps {
-                withCredentials([string(credentialsId: 'BETA_SECRET_KEY', variable: 'SECRET_KEY')]) {
+                
                     sh './gradlew clean assembleDevDebug'
-                }
+             
             }
             post {
                 failure {
